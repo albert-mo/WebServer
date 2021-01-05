@@ -6,7 +6,7 @@ import select
 def service_client(new_socket, request):
     """为这个客户端返回数据"""
 
-    # 1. 接收浏览器发送过来的请求 ，即http请求  
+    # 1. 接收浏览器发送过来的请求 ，即http请求
     # GET / HTTP/1.1
     # .....
     # request = new_socket.recv(1024).decode("utf-8")
@@ -29,7 +29,7 @@ def service_client(new_socket, request):
             file_name = "/index.html"
 
     # 2. 返回http格式的数据，给浏览器
-    
+
     try:
         f = open("./html" + file_name, "rb")
     except:
@@ -84,7 +84,7 @@ def main():
                 new_socket, client_addr = tcp_server_socket.accept()
                 epl.register(new_socket.fileno(), select.EPOLLIN)
                 fd_event_dict[new_socket.fileno()] = new_socket
-            elif event==select.EPOLLIN:
+            elif event == select.EPOLLIN:
                 # 判断已经链接的客户端是否有数据发送过来
                 recv_data = fd_event_dict[fd].recv(1024).decode("utf-8")
                 if recv_data:
@@ -94,11 +94,9 @@ def main():
                     epl.unregister(fd)
                     del fd_event_dict[fd]
 
-
     # 关闭监听套接字
     tcp_server_socket.close()
 
 
 if __name__ == "__main__":
     main()
-

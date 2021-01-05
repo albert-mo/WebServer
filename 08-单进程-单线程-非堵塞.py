@@ -20,7 +20,7 @@ while True:
         print("---只要没有产生异常，那么也就意味着 来了一个新的客户端----")
         new_socket.setblocking(False)  # 设置套接字为非堵塞的方式
         client_socket_list.append(new_socket)
-        
+
     for client_socket in client_socket_list:
         try:
             recv_data = client_socket.recv(1024)
@@ -38,6 +38,3 @@ while True:
                 client_socket.close()
                 client_socket_list.remove(client_socket)
                 print("---客户端已经关闭----")
-        
-
-

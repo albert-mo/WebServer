@@ -4,7 +4,7 @@ import socket
 def service_client(new_socket):
     """为这个客户端返回数据"""
 
-    # 1. 接收浏览器发送过来的请求 ，即http请求  
+    # 1. 接收浏览器发送过来的请求 ，即http请求
     # GET / HTTP/1.1
     # .....
     request = new_socket.recv(1024)
@@ -17,7 +17,7 @@ def service_client(new_socket):
     response += "\r\n"
     # 2.2 准备发送给浏览器的数据---boy
     # response += "hahahhah"
-    
+
     f = open("./html/index.html", "rb")
     html_content = f.read()
     f.close()
@@ -29,7 +29,7 @@ def service_client(new_socket):
 
     # 关闭套接
     new_socket.close()
-    
+
 
 def main():
     """用来完成整体的控制"""
@@ -56,4 +56,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -5,7 +5,7 @@ import re
 def service_client(new_socket):
     """为这个客户端返回数据"""
 
-    # 1. 接收浏览器发送过来的请求 ，即http请求  
+    # 1. 接收浏览器发送过来的请求 ，即http请求
     # GET / HTTP/1.1
     # .....
     request = new_socket.recv(1024).decode("utf-8")
@@ -27,11 +27,8 @@ def service_client(new_socket):
         if file_name == "/":
             file_name = "/index.html"
 
-
-
-
     # 2. 返回http格式的数据，给浏览器
-    
+
     try:
         f = open("./html" + file_name, "rb")
     except:
@@ -53,10 +50,9 @@ def service_client(new_socket):
         # 将response body发送给浏览器
         new_socket.send(html_content)
 
-
     # 关闭套接
     new_socket.close()
-    
+
 
 def main():
     """用来完成整体的控制"""
@@ -83,4 +79,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
